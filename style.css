@@ -15,16 +15,21 @@ header {
     background-color: rgb(0, 124, 138);
 }
 
-header img {
-    height: 65px;
-    align-self: center;
-    min-width: 200px;
+/* header > a > img { */
+img {
+    width: 200px;
+    margin-left: 5px;
 }
 
 header nav {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.logoLink {
+    height: 65px;
+    align-self: center;
 }
 
 nav a {
