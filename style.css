@@ -4,6 +4,10 @@
     font-family: 'Poppins', 'Calibri', 'Verdana';
 }
 
+html{
+    min-height: 100%;
+}
+
 header {
     height: 75px;
     display: flex;
@@ -29,7 +33,7 @@ nav a {
     justify-content: center;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 0.8em;
     text-transform: uppercase;
     color: white;
     background-color: rgb(0, 99, 110);
@@ -39,6 +43,14 @@ nav a {
 nav a:hover {
     background-color: rgba(0, 0, 0, 0.5);
     transition: 0.5s ease;
+    color: white;
+}
+
+.active {
+    transition: 0.5s ease;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 99, 110);
+    border-bottom: 3px solid rgb(0, 99, 110);
 }
 
 header span {
