@@ -4,6 +4,8 @@ const contact = document.querySelector('.contact');
 
 let pathCheck = window.location.pathname;
 
+console.log(pathCheck);
+
 switch (pathCheck) {
     case '/GIT/gwuxdesign/':
         home.classList.add('active');
