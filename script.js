@@ -7,9 +7,10 @@ let pathCheck = window.location.pathname;
 console.log(pathCheck);
 
 switch (pathCheck) {
+    case '/GIT/gwuxdesign/index.html':
     case '/GIT/gwuxdesign/':
-    case '/gwuxdesign/':
     case '/gwuxdesign/index.html':
+    case '/gwuxdesign/':
     case '/index.html':
     case '/':
         home.classList.add('active');
