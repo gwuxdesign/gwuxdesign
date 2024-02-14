@@ -1,5 +1,5 @@
 const home = document.querySelector('.home');
-const profile = document.querySelector('.profile');
+const portfolio = document.querySelector('.portfolio');
 const contact = document.querySelector('.contact');
 
 let pathCheck = window.location.pathname;
@@ -15,10 +15,10 @@ switch (pathCheck) {
     case '/':
         home.classList.add('active');
         break;
-    case '/GIT/gwuxdesign/profile.html':
-    case '/gwuxdesign/profile.html':
-    case '/profile.html':
-        profile.classList.add('active');
+    case '/GIT/gwuxdesign/portfolio.html':
+    case '/gwuxdesign/portfolio.html':
+    case '/portfolio.html':
+        portfolio.classList.add('active');
         break;
     case '/GIT/gwuxdesign/contact.html':
     case '/gwuxdesign/contact.html':
