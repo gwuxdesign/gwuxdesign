@@ -38,16 +38,22 @@
           <img src="/assets/img/logo.svg" alt="GW UX Design logo" />
         </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="/" aria-current="page">Home</a>
-          <a href="/pages/profile.html">Profile</a>
-          <a href="/pages/blog.html">Blog</a>
-          <a href="/pages/contact.html">Contact</a>
-        </nav>
-
-        <button class="theme-toggle" type="button" aria-label="Toggle theme">
-          <span aria-hidden="true">☾</span>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          ☰
         </button>
+
+        <nav class="nav" id="primary-nav">
+          <a href="/" aria-current="page">Home</a>
+          <a href="/profile.html">Profile</a>
+          <a href="/blog.html">Blog</a>
+          <a href="/contact.html">Contact</a>
+
+          <button class="theme-toggle" type="button">Theme</button>
+        </nav>
       </div>
     </header>
 

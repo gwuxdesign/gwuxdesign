@@ -4,7 +4,8 @@
   const storageKey = "theme";
 
   function getSystemTheme() {
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    return window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
   }
@@ -15,7 +16,10 @@
     if (toggle) {
       const icon = theme === "dark" ? "☾" : "☀";
       toggle.innerHTML = `<span aria-hidden="true">${icon}</span>`;
-      toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+      toggle.setAttribute(
+        "aria-label",
+        theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+      );
     }
   }
 
@@ -55,4 +59,12 @@
       applyTheme(getSystemTheme());
     });
   }
+
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", isOpen);
+  });
 })();
