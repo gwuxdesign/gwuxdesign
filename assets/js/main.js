@@ -1,6 +1,6 @@
 (function () {
   const root = document.documentElement;
-  const toggle = document.querySelector(".theme-toggle");
+  const themeToggle = document.querySelector(".theme-toggle");
   const storageKey = "theme";
 
   function getSystemTheme() {
@@ -13,12 +13,12 @@
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
 
-    if (toggle) {
-      const icon = theme === "dark" ? "☾" : "☀";
-      toggle.innerHTML = `<span aria-hidden="true">${icon}</span>`;
-      toggle.setAttribute(
+    if (themeToggle) {
+      const isDark = theme === "dark";
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.setAttribute(
         "aria-label",
-        theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+        isDark ? "Switch to light theme" : "Switch to dark theme",
       );
     }
   }
@@ -43,8 +43,8 @@
   const initial = saved || getSystemTheme();
   applyTheme(initial);
 
-  if (toggle) {
-    toggle.addEventListener("click", function () {
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
       const current = root.getAttribute("data-theme") || initial;
       const next = current === "dark" ? "light" : "dark";
       applyTheme(next);
@@ -52,7 +52,6 @@
     });
   }
 
-  /* Optional: if user has not chosen a theme, track system changes */
   if (!saved && window.matchMedia) {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     media.addEventListener("change", function () {
@@ -63,8 +62,26 @@
   const menuToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", isOpen);
-  });
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+
+      menuToggle.classList.toggle("open", isOpen);
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu",
+      );
+    });
+
+    nav.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") {
+        nav.classList.remove("open");
+        menuToggle.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+    });
+  }
 })();
