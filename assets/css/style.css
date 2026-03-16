@@ -7,6 +7,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  background: var(--bg);
 }
 
 body {
@@ -19,6 +20,12 @@ body {
     Arial,
     sans-serif;
   line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+body.page-loaded {
+  opacity: 1;
 }
 
 /* ---------- Design tokens ---------- */
@@ -356,5 +363,12 @@ main {
   .theme-toggle {
     margin-top: var(--space-4);
     align-self: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none;
+      transform: none;
+    }
   }
 }
