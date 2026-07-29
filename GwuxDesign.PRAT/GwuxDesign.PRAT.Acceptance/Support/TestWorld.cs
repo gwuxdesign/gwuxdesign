@@ -33,7 +33,7 @@ namespace GwuxDesign.PRAT.Acceptance.Support
 
             EnvironmentName = Environment.GetEnvironmentVariable("ENVIRON")
                                ?? baseConfig["DefaultEnvironment"]
-                               ?? "REL";
+                               ?? "local";
 
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
