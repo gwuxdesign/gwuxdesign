@@ -1,0 +1,19 @@
+{
+  "bindingCulture": {
+    "name": "en-GB"
+  },
+  "generator": {
+    "allowDebugGeneratedFiles": true,
+    "allowRowTests": true
+  },
+  "runtime": {
+    "stopAtFirstError": false,
+    "testThreadCount": 1
+  },
+  "reqnroll": {
+    "tagMapping": {
+      "Smoke": "Category",
+      "ExampleFeature": "Category"
+    }
+  }
+}
