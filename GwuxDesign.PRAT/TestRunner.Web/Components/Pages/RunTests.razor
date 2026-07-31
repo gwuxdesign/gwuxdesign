@@ -1,9 +1,11 @@
 @using TestRunner.Web.Services
 @using TestRunner.Web.Models
+@using Microsoft.Extensions.Configuration
 
 @page "/run-tests"
 @rendermode InteractiveServer
 @inject IJSRuntime JS
+@inject IConfiguration Configuration
 
 <style>
     .section-label {
@@ -368,13 +370,13 @@
 @code {
     private List<string> Browsers = new() { "chromium", "firefox", "webkit" };
     private List<string> Devices = new() { "Desktop", "Mobile", "TabletVer", "TabletHor", "Custom" };
-    private List<string> Environments = new() { "REL", "QA2", "DEV" };
+    private List<string> Environments = new() { "local", "online" };
     private List<string> Suites = new() { "Smoke", "Regression", "Full", "Custom" };
 
     private string RunnerName = "";
     private string SelectedBrowser = "chromium";
     private string SelectedDevice = "Desktop";
-    private string SelectedEnvironment = "REL";
+    private string SelectedEnvironment = "local";
     private string SelectedSuite = "Smoke";
     private bool SelectedHeaded = false;
     private bool RecordVideo = false;
@@ -398,6 +400,31 @@
         ("firefox", "TabletHor") => "Firefox does not support tablet emulation. Please select Desktop or switch to Chromium/WebKit.",
         _ => null
     };
+
+    protected override void OnInitialized()
+    {
+        var workingDirectory = Configuration["TestRunner:WorkingDirectory"];
+
+        if (!string.IsNullOrWhiteSpace(workingDirectory) && Directory.Exists(workingDirectory))
+        {
+            var acceptanceConfig = new ConfigurationBuilder()
+                .SetBasePath(workingDirectory)
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddJsonFile("appsettings.local.json", optional: true)
+                .Build();
+
+            var envNames = acceptanceConfig.GetSection("Environments")
+                .GetChildren()
+                .Select(c => c.Key)
+                .ToList();
+
+            if (envNames.Count > 0)
+            {
+                Environments = envNames;
+                SelectedEnvironment = acceptanceConfig["DefaultEnvironment"] ?? envNames[0];
+            }
+        }
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

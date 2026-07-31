@@ -17,16 +17,6 @@ namespace GwuxDesign.PRAT.Acceptance.StepDefinitions
             _outputHelper = outputHelper;
         }
 
-        // Example step - replace with your own steps
-        // Steps are matched to Gherkin scenarios using the [Given], [When], and [Then] attributes
-        // Parameters are captured using {string}, {int}, or other Cucumber expressions
-
-        [Given("the user navigates to the application")]
-        public async Task GivenTheUserNavigatesToTheApplication()
-        {
-            await _world.Page.GotoAsync(_world.BaseUrl);
-        }
-
         [When("the user clicks the example button")]
         public async Task WhenTheUserClicksTheExampleButton()
         {
