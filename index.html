@@ -13,6 +13,7 @@
         } catch (e) {}
       })();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
@@ -76,11 +77,15 @@
       <div class="container">
         <section class="card hero">
           <h1>Designing clear, practical experiences</h1>
-          <p>
-            This site is being rebuilt. Soon you will find a small portfolio, a
-            blog, and experiments as I learn and ship.
-          </p>
+          <p>Notes on things I've built, learned, or broken along the way.</p>
         </section>
+
+        <div id="posts-list" class="posts-list" aria-live="polite"></div>
+        <nav
+          id="posts-pagination"
+          class="pagination"
+          aria-label="Post pagination"
+        ></nav>
       </div>
     </main>
 
@@ -94,7 +99,6 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/blog.js"></script>
   </body>
 </html>
-
-<!-- MODESTMONEY -->

@@ -323,6 +323,75 @@ main {
   font-size: 0.95rem;
 }
 
+/* ---------- Blog: post list (homepage) ---------- */
+.posts-list {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.post-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.post-card h2 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.3rem;
+}
+
+.post-card h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent-hover);
+}
+
+.post-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-2);
+}
+
+.pagination {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.pagination-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.pagination-link:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- Blog: single post page ---------- */
+.post {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.post h1 {
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  margin: 0;
+}
+
+.post-body {
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+.post-body p {
+  margin-block: var(--space-3) 0;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
   .header-inner {

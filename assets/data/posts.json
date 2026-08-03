@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "rebuilding-this-site",
+    "title": "Rebuilding this site",
+    "date": "2026-07-15",
+    "summary": "Why I tore down the old site and started fresh, plus the stack I landed on.",
+    "content": "## Why rebuild?\n\nThe old site had grown unwieldy...\n\n- Point one\n- Point two\n\nSome **bold** text and a [link](https://example.com)."
+  }
+]
