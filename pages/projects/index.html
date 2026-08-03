@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
+    <title>Projects | GW UX Design</title>
+    <meta name="description" content="A collection of personal projects I've built outside of work." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       (function () {
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <a
+    <a    
       href="#content"
       class="skip"
       style="
@@ -51,7 +51,7 @@
 
         <nav class="nav" id="primary-nav">
           <a href="/">Home</a>
-          <a href="/pages/blog/">Blog</a>
+          <!-- <a href="/pages/blog/">Blog</a> -->
           <a href="/pages/profile/">Profile</a>
           <a href="/pages/projects/" aria-current="page">Projects</a>
           <a href="/pages/contact/">Contact</a>
@@ -74,12 +74,11 @@
 
     <main id="content">
       <div class="container">
-        <section class="card hero">
-          <h1>Designing clear, practical experiences</h1>
-          <p>
-            This site is being rebuilt. Soon you will find a small portfolio, a
-            blog, and experiments as I learn and ship.
-          </p>
+        <section class="card">
+          <h1>Projects</h1>
+          <p>A collection of things I've built outside of work.</p>
+
+          <div id="projects-list" class="projects-grid" aria-live="polite"></div>
         </section>
       </div>
     </main>
@@ -94,5 +93,6 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/projects.js" defer></script>
   </body>
 </html>

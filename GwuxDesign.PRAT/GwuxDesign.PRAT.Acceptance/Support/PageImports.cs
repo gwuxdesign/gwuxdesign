@@ -19,6 +19,7 @@ namespace GwuxDesign.PRAT.Acceptance.Support
         public ExamplePage examplePage => new ExamplePage(_page);
         public HeaderPage headerPage => new HeaderPage(_page);
         public NavigationPage navigationPage => new NavigationPage(_page);
+        public ProjectsPage projectsPage => new ProjectsPage(_page);
 
         // Example page requiring TestWorld context - replace with your own page objects
         // public ExampleWorldPage exampleWorldPage => new ExampleWorldPage(_world);

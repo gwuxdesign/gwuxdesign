@@ -10,7 +10,6 @@ Feature: Navigation
 
     Examples:
       | Link     | Path             |
-      | Blog     | /pages/blog/     |
       | Profile  | /pages/profile/  |
       | Projects | /pages/projects/ |
       | Contact  | /pages/contact/  |
