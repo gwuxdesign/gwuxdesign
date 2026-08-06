@@ -77,20 +77,53 @@
         <section class="card profile">
           <div class="profile-photo">
             <img src="/assets/img/profile.jpg" alt="Photo of Greg Williams" />
+            <a
+              class="profile-link"
+              href="https://www.linkedin.com/in/gregjswilliams/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
           </div>
 
           <div class="profile-about">
             <h1>About</h1>
             <p>
-              <!-- your updated bio goes here -->
+              A seasoned Quality Assurance professional with over 15 years of
+              experience in the tech industry, specialising in test automation,
+              quality strategy, and platform testing with an emphasis on
+              reliability and user satisfaction. Track record spans leading QA
+              teams and driving hands-on technical delivery, most recently
+              within financial services, and previously focusing on a mobile
+              platform for the Global Cycling Network.<br /><br />
+
+              Designed and built a bespoke test automation framework (PRAT)
+              using .NET, Playwright, Reqnroll and NUnit, significantly reducing
+              regression testing time and improving release confidence.
+              Experienced in evaluating and introducing automation tooling,
+              mentoring team members in test automation and coding practices,
+              and maintaining audit-ready testing evidence within regulated
+              environments.<br /><br />
+
+              Currently undertaking a Level 7 apprenticeship to further develop
+              leadership and technical capability. Committed to combining strong
+              technical foundations with a collaborative, quality-first approach
+              to support reliable, well-tested products.
             </p>
           </div>
 
-          <ul
-            id="skills-list"
-            class="skills-list"
-            aria-label="Programming skills"
-          ></ul>
+          <div class="skills-block">
+            <div class="skills-scale">
+  <span>Beginner</span>
+  <span>Experienced</span>
+</div>
+
+            <ul
+              id="skills-list"
+              class="skills-list"
+              aria-label="Programming skills"
+            ></ul>
+          </div>
         </section>
       </div>
     </main>
@@ -105,5 +138,6 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/profile.js"></script>
   </body>
 </html>

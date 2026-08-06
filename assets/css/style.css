@@ -454,7 +454,7 @@ main {
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
       "about photo"
-      "skills skills";
+      "about skills-block";
   }
 
   .profile-about {
@@ -463,10 +463,18 @@ main {
 
   .profile-photo {
     grid-area: photo;
+    justify-self: end;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
   }
 
-  .skills-list {
-    grid-area: skills;
+  .skills-block {
+    grid-area: skills-block;
+    justify-self: end;
+    width: 100%;
   }
 }
 
@@ -481,14 +489,31 @@ main {
   color: var(--text);
 }
 
+.profile-photo {
+  grid-area: photo;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 .profile-photo img {
   width: 100%;
-  max-width: 220px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--border);
-  justify-self: center;
+}
+
+.profile-link {
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  color: var(--accent-hover);
 }
 
 .skills-list {
@@ -506,23 +531,49 @@ main {
   gap: var(--space-3);
 }
 
-.skill-label {
-  font-size: 0.9rem;
+.skills-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-scale-track {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
+.skill-label {
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 .skill-track {
-  background: var(--surface);
+  display: block;
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 999px;
-  height: 10px;
+  height: 34px;
   overflow: hidden;
 }
 
 .skill-fill {
-  display: block;
+  display: flex;
+  align-items: center;
   height: 100%;
+  padding: 0 var(--space-3);
   background: var(--accent);
   border-radius: 999px;
+  white-space: nowrap;
   transition: width 0.3s ease;
 }

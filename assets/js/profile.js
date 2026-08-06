@@ -11,9 +11,10 @@
         row.dataset.skill = item.skill;
 
         row.innerHTML = `
-          <span class="skill-label">${item.skill}</span>
           <span class="skill-track">
-            <span class="skill-fill" style="width: ${item.level}%"></span>
+            <span class="skill-fill" style="width: ${item.level}%">
+              <span class="skill-label">${item.skill}</span>
+            </span>
           </span>
         `;
 

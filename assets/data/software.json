@@ -1,0 +1,5 @@
+[
+  { "category": "Development", "tools": ["VS Code", ".NET CLI", "Git"] },
+  { "category": "Testing & CI/CD", "tools": ["Playwright", "Azure DevOps"] },
+  { "category": "Other", "tools": ["Python"] }
+]
