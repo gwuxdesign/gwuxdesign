@@ -1,0 +1,10 @@
+[
+  { "skill": "C#", "level": 90 },
+  { "skill": ".NET", "level": 85 },
+  { "skill": "Playwright", "level": 85 },
+  { "skill": "HTML/CSS/JS", "level": 75 },
+  { "skill": "Reqnroll / BDD", "level": 75 },
+  { "skill": "Git", "level": 80 },
+  { "skill": "GitHub Actions / CI-CD", "level": 65 },
+  { "skill": "Python", "level": 45 }
+]
