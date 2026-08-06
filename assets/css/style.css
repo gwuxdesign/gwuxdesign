@@ -525,10 +525,8 @@ main {
 }
 
 .skill-bar {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  align-items: center;
-  gap: var(--space-3);
+  display: block;
+  cursor: default;
 }
 
 .skills-scale {
@@ -553,18 +551,21 @@ main {
 }
 
 .skill-label {
-  color: var(--bg);
+  color: #fff;
   font-weight: 600;
   font-size: 0.85rem;
+  /* cursor: pointer; */
 }
 
 .skill-track {
   display: block;
+  width: 100%;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 999px;
   height: 34px;
   overflow: hidden;
+  transition: box-shadow 0.2s ease;
 }
 
 .skill-fill {
@@ -575,5 +576,14 @@ main {
   background: var(--accent);
   border-radius: 999px;
   white-space: nowrap;
-  transition: width 0.3s ease;
+  /* transition: width 0.3s ease; */
+  transition: width 0.3s ease, background 0.2s ease;
+}
+
+.skill-bar:hover .skill-track {
+  box-shadow: 0 0 0 1px var(--accent-soft), 0 0 16px var(--accent-soft);
+}
+
+.skill-bar:hover .skill-fill {
+  background: var(--accent-hover);
 }
