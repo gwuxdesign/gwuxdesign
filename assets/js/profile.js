@@ -26,3 +26,35 @@
       console.error("Failed to load skills:", error);
     });
 })();
+
+(function () {
+  const table = document.getElementById("software-table");
+  if (!table) return;
+
+  fetch("/assets/data/software.json")
+    .then((response) => response.json())
+    .then((categories) => {
+      categories.forEach((category) => {
+        category.tools.forEach((tool, index) => {
+          const row = document.createElement("tr");
+
+          if (index === 0) {
+            const th = document.createElement("th");
+            th.rowSpan = category.tools.length;
+            th.textContent = category.category;
+            row.appendChild(th);
+          }
+
+          const td = document.createElement("td");
+          td.textContent = tool;
+          row.appendChild(td);
+
+          table.appendChild(row);
+        });
+      });
+    })
+    .catch((error) => {
+      table.innerHTML = "<tr><td>Unable to load software list right now.</td></tr>";
+      console.error("Failed to load software list:", error);
+    });
+})();

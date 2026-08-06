@@ -587,3 +587,32 @@ main {
 .skill-bar:hover .skill-fill {
   background: var(--accent-hover);
 }
+
+.software {
+  margin-top: var(--space-5);
+}
+
+.software h2 {
+  font-size: 1.3rem;
+  margin: 0 0 var(--space-3);
+}
+
+.software-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--border);
+}
+
+.software-table th,
+.software-table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.software-table th {
+  color: var(--muted);
+  font-weight: 600;
+  vertical-align: top;
+  width: 200px;
+}
