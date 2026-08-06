@@ -27,8 +27,9 @@ namespace GwuxDesign.PRAT.Acceptance.StepDefinitions
             await Expect(_world.Page).ToHaveURLAsync(new System.Text.RegularExpressions.Regex($"{System.Text.RegularExpressions.Regex.Escape(path)}$"));
         }
 
+        [Given("the user navigates to the {string} page")]
         [When("the user navigates to the {string} page")]
-        public async Task WhenTheUserNavigatesToThePage(string pageName)
+        public async Task GivenOrWhenTheUserNavigatesToThePage(string pageName)
         {
             var path = pageName switch
             {
