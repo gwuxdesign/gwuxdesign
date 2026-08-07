@@ -452,12 +452,16 @@ main {
 @media (min-width: 700px) {
   .profile {
     grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      "about photo"
-      "about skills-block";
+    align-items: start;
   }
 
-  .profile-about {
+  .profile-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* .profile-about {
     grid-area: about;
   }
 
@@ -475,7 +479,7 @@ main {
     grid-area: skills-block;
     justify-self: end;
     width: 100%;
-  }
+  } */
 }
 
 .profile-about h1 {
