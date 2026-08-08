@@ -315,6 +315,11 @@ main {
   max-width: 65ch;
 }
 
+.page-title {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--border);
@@ -327,7 +332,7 @@ main {
 .posts-list {
   display: grid;
   gap: var(--space-4);
-  margin-top: var(--space-5);
+  margin-top: 0;
 }
 
 .post-card {
@@ -335,6 +340,13 @@ main {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
+}
+
+.post-card:has(.post-card-image) {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-4);
+  align-items: start;
 }
 
 .post-card h2 {
@@ -357,19 +369,81 @@ main {
   margin: 0 0 var(--space-2);
 }
 
+.post-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.post-hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--space-4);
+}
+
 .pagination {
   display: flex;
-  gap: var(--space-3);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
   margin-top: var(--space-4);
 }
 
 .pagination-link {
-  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
   text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .pagination-link:hover {
-  color: var(--accent-hover);
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.pagination-current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.posts-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.posts-sort-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.posts-sort {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.9rem;
 }
 
 /* ---------- Blog: single post page ---------- */
@@ -460,26 +534,6 @@ main {
     flex-direction: column;
     gap: var(--space-4);
   }
-
-  /* .profile-about {
-    grid-area: about;
-  }
-
-  .profile-photo {
-    grid-area: photo;
-    justify-self: end;
-    align-self: start;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .skills-block {
-    grid-area: skills-block;
-    justify-self: end;
-    width: 100%;
-  } */
 }
 
 .profile-about h1 {
@@ -494,7 +548,6 @@ main {
 }
 
 .profile-photo {
-  grid-area: photo;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -558,7 +611,6 @@ main {
   color: #fff;
   font-weight: 600;
   font-size: 0.85rem;
-  /* cursor: pointer; */
 }
 
 .skill-track {
@@ -580,7 +632,6 @@ main {
   background: var(--accent);
   border-radius: 999px;
   white-space: nowrap;
-  /* transition: width 0.3s ease; */
   transition: width 0.3s ease, background 0.2s ease;
 }
 

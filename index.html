@@ -75,10 +75,15 @@
 
     <main id="content">
       <div class="container">
-        <section class="card hero">
-          <h1>Designing clear, practical experiences</h1>
-          <p>Notes on things I've built, learned, or broken along the way.</p>
-        </section>
+        <h1 class="page-title">Designing clear, practical experiences</h1>
+
+        <div class="posts-controls">
+          <label for="posts-sort" class="posts-sort-label">Sort by</label>
+          <select id="posts-sort" class="posts-sort">
+            <option value="desc">Newest to oldest</option>
+            <option value="asc">Oldest to newest</option>
+          </select>
+        </div>
 
         <div id="posts-list" class="posts-list" aria-live="polite"></div>
         <nav

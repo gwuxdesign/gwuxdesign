@@ -26,8 +26,13 @@
         day: "numeric",
       });
 
+      const imageMarkup = post.image
+        ? `<img class="post-hero-image" src="${post.image}" alt="" />`
+        : "";
+
       container.dataset.postSlug = post.slug;
       container.innerHTML = `
+        ${imageMarkup}
         <h1>${post.title}</h1>
         <p class="post-date">${formattedDate}</p>
         <div class="post-body">${marked.parse(post.content)}</div>
