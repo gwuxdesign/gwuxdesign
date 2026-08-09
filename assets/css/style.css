@@ -671,3 +671,55 @@ main {
   vertical-align: top;
   width: 200px;
 }
+
+.projects-grid {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.project-card:has(.project-card-image) {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.project-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.project-card h2 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.3rem;
+}
+
+.project-card p {
+  margin: 0 0 var(--space-2);
+  color: var(--text);
+}
+
+.project-tags {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.project-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project-card a:hover {
+  color: var(--accent-hover);
+}

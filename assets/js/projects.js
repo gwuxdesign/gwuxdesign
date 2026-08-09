@@ -12,11 +12,18 @@
           card.className = "project-card";
           card.dataset.projectId = project.id;
 
+          const imageMarkup = project.image
+            ? `<img class="project-card-image" src="${project.image}" alt="" loading="lazy" />`
+            : "";
+
           card.innerHTML = `
-            <h2>${project.title}</h2>
-            <p>${project.description}</p>
-            <p class="project-tags">${project.tags.join(", ")}</p>
-            <a href="${project.link}" target="_blank" rel="noopener noreferrer">View project</a>
+            ${imageMarkup}
+            <div class="project-card-body">
+              <h2>${project.title}</h2>
+              <p>${project.description}</p>
+              <p class="project-tags">${project.tags.join(", ")}</p>
+              <a href="${project.link}" target="_blank" rel="noopener noreferrer">View project</a>
+            </div>
           `;
 
           container.appendChild(card);

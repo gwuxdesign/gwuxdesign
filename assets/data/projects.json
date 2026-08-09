@@ -5,6 +5,7 @@
     "description": "Designed and built a multi-page website for a local pet-care business, including service listings, a portfolio, and a contact page.",
     "link": "https://wonderwalkies.co.uk/",
     "year": 2025,
-    "tags": ["HTML", "CSS", "JavaScript"]
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "image": "/assets/img/projects/wonder-walkies-preview.svg"
   }
 ]
