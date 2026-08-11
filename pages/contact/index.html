@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
+    <title>Contact | GW UX Design</title>
+    <meta name="description" content="Get in touch." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       (function () {
@@ -74,12 +74,39 @@
 
     <main id="content">
       <div class="container">
-        <section class="card hero">
-          <h1>Designing clear, practical experiences</h1>
-          <p>
-            This site is being rebuilt. Soon you will find a small portfolio, a
-            blog, and experiments as I learn and ship.
-          </p>
+        <section class="card contact">
+          <h1>Contact</h1>
+          <p>Have a question or want to work together? Drop me a message below.</p>
+
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+              <span class="form-error" data-error-for="name"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+              <span class="form-error" data-error-for="email"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+              <span class="form-error" data-error-for="message"></span>
+            </div>
+
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAELPANTJwSI2X6kO"></div>
+
+            <button type="submit" class="button-primary">Send message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div id="contact-confirmation" class="contact-confirmation" hidden>
+            <h2>Message sent</h2>
+            <p>Thanks for getting in touch, I'll get back to you as soon as I can.</p>
+          </div>
         </section>
       </div>
     </main>
@@ -93,6 +120,8 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/contact.js"></script>
   </body>
 </html>

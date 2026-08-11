@@ -536,6 +536,13 @@ main {
   }
 }
 
+@media (max-width: 500px) {
+  .post-card:has(.post-card-image),
+  .project-card:has(.project-card-image) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .profile-about h1 {
   margin: 0 0 var(--space-3);
   font-size: clamp(1.8rem, 2.8vw, 2.6rem);
@@ -598,14 +605,14 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
-.skills-scale-track {
+/* .skills-scale-track {
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
-}
+} */
 
 .skill-label {
   color: #fff;
