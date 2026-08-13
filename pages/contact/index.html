@@ -76,7 +76,7 @@
       <div class="container">
         <section class="card contact">
           <h1>Contact</h1>
-          <p>Have a question or want to work together? Drop me a message below.</p>
+          <p>Have a question or want to in touch? Drop me a message below.</p>
 
           <form id="contact-form" class="contact-form" novalidate>
             <div class="form-field">
@@ -93,19 +93,36 @@
 
             <div class="form-field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+              ></textarea>
               <span class="form-error" data-error-for="message"></span>
             </div>
 
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAELPANTJwSI2X6kO"></div>
+            <div class="contact-form-actions">
+              <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAAELPANTJwSI2X6kO"
+              ></div>
+              <button type="submit" class="button-primary">Send message</button>
+            </div>
 
-            <button type="submit" class="button-primary">Send message</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
 
           <div id="contact-confirmation" class="contact-confirmation" hidden>
             <h2>Message sent</h2>
-            <p>Thanks for getting in touch, I'll get back to you as soon as I can.</p>
+            <p>
+              Thanks for getting in touch, I'll get back to you as soon as I
+              can.
+            </p>
+            <p>
+              You should receive a confirmation email shortly, if you don't see
+              it in your inbox, please check your spam or junk folder.
+            </p>
           </div>
         </section>
       </div>
@@ -120,7 +137,11 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/contact.js"></script>
   </body>

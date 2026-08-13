@@ -730,3 +730,90 @@ main {
 .project-card a:hover {
   color: var(--accent-hover);
 }
+
+/* ---------- Contact page ---------- */
+.contact h1 {
+  margin: 0 0 var(--space-2);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+}
+
+.contact {
+  min-width: 100%;
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.form-field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.form-error {
+  color: #e05c5c;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  justify-self: start;
+}
+
+.button-primary:hover {
+  background: var(--accent-hover);
+}
+
+.form-status {
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.contact-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.contact-confirmation {
+  margin-top: var(--space-4);
+}
+
+.contact-confirmation h2 {
+  margin: 0 0 var(--space-2);
+}
