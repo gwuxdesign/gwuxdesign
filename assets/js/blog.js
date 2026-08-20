@@ -66,14 +66,18 @@
         ? `<img class="post-card-image" src="${post.image}" alt="" loading="lazy" />`
         : "";
 
+      const backHref = encodeURIComponent(
+        `${window.location.pathname}${window.location.search}`,
+      );
+
       article.innerHTML = `
-        ${imageMarkup}
-        <div class="post-card-body">
-          <h2><a href="/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}">${post.title}</a></h2>
-          <p class="post-date">${formattedDate}</p>
-          <p>${post.summary}</p>
-        </div>
-      `;
+      ${imageMarkup}
+      <div class="post-card-body">
+        <h2><a href="/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}&from=${backHref}">${post.title}</a></h2>
+        <p class="post-date">${formattedDate}</p>
+        <p>${post.summary}</p>
+      </div>
+    `;
 
       listContainer.appendChild(article);
     });

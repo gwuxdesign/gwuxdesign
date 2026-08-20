@@ -26,12 +26,18 @@
         ? `<img class="post-hero-image" src="${post.image}" alt="" />`
         : "";
 
+      const fromParam = params.get("from");
+      const backHref = fromParam ? decodeURIComponent(fromParam) : "/";
+
       container.dataset.postSlug = post.slug;
       container.innerHTML = `
-        ${imageMarkup}
+        <a href="${backHref}" class="post-back-link">&larr; Back to posts</a>
         <h1>${post.title}</h1>
         <p class="post-date">${formattedDate}</p>
-        <div class="post-body">${marked.parse(post.content)}</div>
+        <div class="post-body">
+          ${imageMarkup}
+          ${marked.parse(post.content)}
+        </div>
       `;
 
       document.title = `${post.title} | GW UX Design`;
