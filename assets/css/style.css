@@ -827,3 +827,10 @@ main {
 .contact-confirmation h2 {
   margin: 0 0 var(--space-2);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
