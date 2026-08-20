@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
+    <title>Projects | GW UX Design</title>
+    <meta name="description" content="A collection of personal projects I've built outside of work." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       (function () {
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <a
+    <a    
       href="#content"
       class="skip"
       style="
@@ -51,10 +51,10 @@
         </button>
 
         <nav class="nav" id="primary-nav">
-          <a href="/" aria-current="page">Home</a>
+          <a href="/">Home</a>
           <!-- <a href="/pages/blog/">Blog</a> -->
           <a href="/pages/profile/">Profile</a>
-          <a href="/pages/projects/">Projects</a>
+          <a href="/pages/projects/" aria-current="page">Projects</a>
           <a href="/pages/contact/">Contact</a>
 
           <button
@@ -75,22 +75,12 @@
 
     <main id="content">
       <div class="container">
-        <h1 class="page-title">Designing clear, practical experiences</h1>
+        <section class="card">
+          <h1>Projects</h1>
+          <p>A collection of things I've built outside of work.</p>
 
-        <div class="posts-controls">
-          <label for="posts-sort" class="posts-sort-label">Sort by</label>
-          <select id="posts-sort" class="posts-sort">
-            <option value="desc">Newest to oldest</option>
-            <option value="asc">Oldest to newest</option>
-          </select>
-        </div>
-
-        <div id="posts-list" class="posts-list" aria-live="polite"></div>
-        <nav
-          id="posts-pagination"
-          class="pagination"
-          aria-label="Post pagination"
-        ></nav>
+          <div id="projects-list" class="projects-grid" aria-live="polite"></div>
+        </section>
       </div>
     </main>
 
@@ -104,7 +94,6 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/utils.js"></script>
-    <script src="/assets/js/blog.js"></script>
+    <script src="/assets/js/projects.js" defer></script>
   </body>
 </html>

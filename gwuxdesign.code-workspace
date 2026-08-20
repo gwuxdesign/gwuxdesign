@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "cucumber.glue": [
+            "GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance/StepDefinitions/*.cs"
+        ],
+        "cucumber.features": [
+            "GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance/Features/*.feature"
+        ]
+    }
+}

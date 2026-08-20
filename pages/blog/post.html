@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
+    <title>Post | GW UX Design</title>
+    <meta name="description" content="A blog post from GW UX Design." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       (function () {
@@ -12,7 +12,8 @@
           if (theme) document.documentElement.setAttribute("data-theme", theme);
         } catch (e) {}
       })();
-    </script>
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
     <style>html{background-color:#0b1416;}</style>
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
     <link rel="stylesheet" href="/assets/css/style.css" />
@@ -51,7 +52,7 @@
         </button>
 
         <nav class="nav" id="primary-nav">
-          <a href="/" aria-current="page">Home</a>
+          <a href="/">Home</a>
           <!-- <a href="/pages/blog/">Blog</a> -->
           <a href="/pages/profile/">Profile</a>
           <a href="/pages/projects/">Projects</a>
@@ -75,22 +76,9 @@
 
     <main id="content">
       <div class="container">
-        <h1 class="page-title">Designing clear, practical experiences</h1>
-
-        <div class="posts-controls">
-          <label for="posts-sort" class="posts-sort-label">Sort by</label>
-          <select id="posts-sort" class="posts-sort">
-            <option value="desc">Newest to oldest</option>
-            <option value="asc">Oldest to newest</option>
-          </select>
-        </div>
-
-        <div id="posts-list" class="posts-list" aria-live="polite"></div>
-        <nav
-          id="posts-pagination"
-          class="pagination"
-          aria-label="Post pagination"
-        ></nav>
+        <article id="post-content" class="card post" aria-live="polite">
+          <p>Loading post…</p>
+        </article>
       </div>
     </main>
 
@@ -105,6 +93,6 @@
     </script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/utils.js"></script>
-    <script src="/assets/js/blog.js"></script>
+    <script src="/assets/js/post.js"></script>
   </body>
 </html>

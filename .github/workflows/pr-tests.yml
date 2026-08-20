@@ -1,0 +1,59 @@
+name: PR Tests
+
+on:
+  pull_request:
+    branches: [alpha1, main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        working-directory: GwuxDesign.PRAT
+        run: dotnet restore GwuxDesign.PRAT.Acceptance/GwuxDesign.PRAT.Acceptance.csproj
+
+      - name: Build
+        working-directory: GwuxDesign.PRAT
+        run: dotnet build GwuxDesign.PRAT.Acceptance/GwuxDesign.PRAT.Acceptance.csproj --no-restore
+
+      - name: Install Playwright browsers
+        working-directory: GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance
+        run: pwsh bin/Debug/net10.0/playwright.ps1 install --with-deps
+
+      - name: Serve site locally
+        run: python3 -m http.server 8000 &
+
+      - name: Run tests
+        working-directory: GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance
+        env:
+          ENVIRON: local
+          Environments__local__BaseUrl: http://localhost:8000
+        run: dotnet test --no-restore --filter "TestCategory!=Example"
+
+  build-contact-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        working-directory: GwuxDesign.ContactFunction
+        run: dotnet restore
+
+      - name: Build
+        working-directory: GwuxDesign.ContactFunction
+        run: dotnet build --no-restore

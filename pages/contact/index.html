@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
+    <title>Contact | GW UX Design</title>
+    <meta name="description" content="Get in touch." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       (function () {
@@ -51,11 +51,11 @@
         </button>
 
         <nav class="nav" id="primary-nav">
-          <a href="/" aria-current="page">Home</a>
+          <a href="/">Home</a>
           <!-- <a href="/pages/blog/">Blog</a> -->
           <a href="/pages/profile/">Profile</a>
           <a href="/pages/projects/">Projects</a>
-          <a href="/pages/contact/">Contact</a>
+          <a href="/pages/contact/" aria-current="page">Contact</a>
 
           <button
             class="theme-toggle"
@@ -75,22 +75,57 @@
 
     <main id="content">
       <div class="container">
-        <h1 class="page-title">Designing clear, practical experiences</h1>
+        <section class="card contact">
+          <h1>Contact</h1>
+          <p>Have a question or want to in touch? Drop me a message below.</p>
 
-        <div class="posts-controls">
-          <label for="posts-sort" class="posts-sort-label">Sort by</label>
-          <select id="posts-sort" class="posts-sort">
-            <option value="desc">Newest to oldest</option>
-            <option value="asc">Oldest to newest</option>
-          </select>
-        </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+              <span class="form-error" data-error-for="name"></span>
+            </div>
 
-        <div id="posts-list" class="posts-list" aria-live="polite"></div>
-        <nav
-          id="posts-pagination"
-          class="pagination"
-          aria-label="Post pagination"
-        ></nav>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+              <span class="form-error" data-error-for="email"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+              ></textarea>
+              <span class="form-error" data-error-for="message"></span>
+            </div>
+
+            <div class="contact-form-actions">
+              <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAAELPANTJwSI2X6kO"
+              ></div>
+              <button type="submit" class="button-primary">Send message</button>
+            </div>
+
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div id="contact-confirmation" class="contact-confirmation" hidden>
+            <h2>Message sent</h2>
+            <p>
+              Thanks for getting in touch, I'll get back to you as soon as I
+              can.
+            </p>
+            <p>
+              You should receive a confirmation email shortly, if you don't see
+              it in your inbox, please check your spam or junk folder.
+            </p>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -103,8 +138,12 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
     <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/utils.js"></script>
-    <script src="/assets/js/blog.js"></script>
+    <script src="/assets/js/contact.js"></script>
   </body>
 </html>

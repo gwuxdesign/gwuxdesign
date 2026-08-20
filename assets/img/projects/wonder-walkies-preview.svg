@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 132 137" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.75,0,0,0.75,0,0)">
+        <g transform="matrix(1.49099,-0.227145,0.212331,1.39376,4.89631,15.183)">
+            <rect x="1" y="3" width="61" height="61" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="1" y="3" width="61" height="61"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(0.663043,0,0,0.709302,1,3)">
+                    <g transform="matrix(1.15517,0,0,1.13793,9.37931,-11.2069)">
+                        <circle cx="33" cy="74" r="29"/>
+                    </g>
+                    <g transform="matrix(1.53714,-0.0636945,0.0490684,1.18417,18.8515,-20.6962)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.53145,0.146762,-0.113061,1.17978,50.0127,-21.5573)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.49707,0.35447,-0.273073,1.1533,75.972,-3.15602)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.51276,-0.280016,0.215716,1.16539,-10.9092,-1.09356)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-5.00006,1.04777)">
+                        <path d="M52.5,57.55C56.395,52 64.184,52 68.079,54.775C71.974,57.55 71.974,63.1 68.079,68.65C65.353,72.813 58.342,76.975 52.5,79.75C46.658,76.975 39.647,72.813 36.921,68.65C33.026,63.1 33.026,57.55 36.921,54.775C40.816,52 48.605,52 52.5,57.55Z" style="fill:rgb(255,0,0);"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,0.734375,-1.82377)">
+                        <g transform="matrix(16,0,0,16,53.3672,74.4609)">
+                        </g>
+                        <text x="39px" y="74.461px" style="font-family:'Apple-Chancery', 'Apple Chancery', cursive;font-style:italic;font-size:16px;fill:rgb(0,201,0);stroke:black;stroke-width:0.27px;">W</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1.5082,0,0,1.40984,74.4675,86.4892)">
+            <rect x="1" y="3" width="61" height="61" style="fill:none;"/>
+            <clipPath id="_clip2">
+                <rect x="1" y="3" width="61" height="61"/>
+            </clipPath>
+            <g clip-path="url(#_clip2)">
+                <g transform="matrix(0.663043,0,0,0.709302,1,3)">
+                    <g transform="matrix(1.15517,0,0,1.13793,9.37931,-11.2069)">
+                        <circle cx="33" cy="74" r="29"/>
+                    </g>
+                    <g transform="matrix(1.53714,-0.0636945,0.0490684,1.18417,18.8515,-20.6962)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.53145,0.146762,-0.113061,1.17978,50.0127,-21.5573)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.49707,0.35447,-0.273073,1.1533,75.972,-3.15602)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1.51276,-0.280016,0.215716,1.16539,-10.9092,-1.09356)">
+                        <ellipse cx="9.5" cy="31.5" rx="6.5" ry="13.5"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-5.00006,1.04777)">
+                        <path d="M52.5,57.55C56.395,52 64.184,52 68.079,54.775C71.974,57.55 71.974,63.1 68.079,68.65C65.353,72.813 58.342,76.975 52.5,79.75C46.658,76.975 39.647,72.813 36.921,68.65C33.026,63.1 33.026,57.55 36.921,54.775C40.816,52 48.605,52 52.5,57.55Z" style="fill:rgb(255,0,0);"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1,0.734375,-1.82377)">
+                        <g transform="matrix(16,0,0,16,53.3672,74.4609)">
+                        </g>
+                        <text x="39px" y="74.461px" style="font-family:'Apple-Chancery', 'Apple Chancery', cursive;font-style:italic;font-size:16px;fill:rgb(0,201,0);stroke:black;stroke-width:0.27px;">W</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

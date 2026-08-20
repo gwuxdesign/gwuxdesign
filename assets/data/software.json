@@ -1,0 +1,43 @@
+[
+  {
+    "category": "Development",
+    "tools": [
+      ".NET CLI",
+      "Git",
+      "Insomnia",
+      "Postman",
+      "Visual Studio",
+      "VS Code"
+    ]
+  },
+  {
+    "category": "Testing & CI/CD",
+    "tools": [
+      "ADO Test Planner",
+      "Browserstack",
+      "SauceLabs",
+      "Testrail",
+      "XRAY"
+    ]
+  },
+  {
+    "category": "Automation Frameworks",
+    "tools": [
+      "Codeception",
+      "CodeceptJS",
+      "NUnit",
+      "Playwright",
+      "Reqnroll",
+      "Selenium"
+    ]
+  },
+  { "category": "Creative", "tools": ["Affinity Suite", "Davinci Resolve"] },
+  {
+    "category": "Platforms",
+    "tools": ["Azure DevOps", "Firebase", "Jira", "VSTS"]
+  },
+  {
+    "category": "Operating Systems",
+    "tools": ["Android", "iOS", "Linux", "MacOS", "Windows"]
+  }
+]
