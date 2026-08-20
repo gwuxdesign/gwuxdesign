@@ -60,11 +60,7 @@
       article.className = "post-card";
       article.dataset.postSlug = post.slug;
 
-      const formattedDate = new Date(post.date).toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
+      const formattedDate = formatDate(post.date);
 
       const imageMarkup = post.image
         ? `<img class="post-card-image" src="${post.image}" alt="" loading="lazy" />`

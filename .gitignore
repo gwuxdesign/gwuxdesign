@@ -43,6 +43,7 @@ TestResults/
 *.trx
 *.coverage
 *.coveragexml
+**/TestResult.xml
 
 ############################
 # Logs and diagnostics

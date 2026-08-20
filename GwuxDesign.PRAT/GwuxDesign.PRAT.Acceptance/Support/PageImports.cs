@@ -17,7 +17,6 @@ namespace GwuxDesign.PRAT.Acceptance.Support
 
         public HomePage homePage => new HomePage(_page);
         public HeaderPage headerPage => new HeaderPage(_page);
-        public NavigationPage navigationPage => new NavigationPage(_page);
         public ProfilePage profilePage => new ProfilePage(_page);
         public ProjectsPage projectsPage => new ProjectsPage(_page);
         public ContactPage contactPage => new ContactPage(_page);

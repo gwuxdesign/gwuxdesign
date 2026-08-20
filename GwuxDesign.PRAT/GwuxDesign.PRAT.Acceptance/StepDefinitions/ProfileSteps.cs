@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Reqnroll;
 using NUnit.Framework;
@@ -29,9 +27,7 @@ namespace GwuxDesign.PRAT.Acceptance.StepDefinitions
         [Then("the number of skill bars should match the skills data")]
         public async Task ThenSkillBarsShouldMatchData()
         {
-            using var client = new HttpClient();
-            var skills = await client.GetFromJsonAsync<List<SkillEntry>>(
-                $"{_world.BaseUrl}/assets/data/skills.json");
+            var skills = await JsonDataClient.GetAsync<List<SkillEntry>>($"{_world.BaseUrl}/assets/data/skills.json");
 
             var barCount = await _world.Pages.profilePage.SkillBars.CountAsync();
             Assert.That(barCount, Is.EqualTo(skills!.Count));

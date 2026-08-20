@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Reqnroll;
 using NUnit.Framework;
@@ -28,9 +26,7 @@ namespace GwuxDesign.PRAT.Acceptance.StepDefinitions
         [Then("every project card should link to the URL defined in the project data")]
         public async Task ThenEveryProjectCardShouldLinkCorrectly()
         {
-            using var client = new HttpClient();
-            var projects = await client.GetFromJsonAsync<List<ProjectEntry>>(
-                $"{_world.BaseUrl}/assets/data/projects.json");
+            var projects = await JsonDataClient.GetAsync<List<ProjectEntry>>($"{_world.BaseUrl}/assets/data/projects.json");
 
             foreach (var project in projects!)
             {

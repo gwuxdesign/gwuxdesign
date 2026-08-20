@@ -20,11 +20,7 @@
         return;
       }
 
-      const formattedDate = new Date(post.date).toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
+      const formattedDate = formatDate(post.date);
 
       const imageMarkup = post.image
         ? `<img class="post-hero-image" src="${post.image}" alt="" />`
