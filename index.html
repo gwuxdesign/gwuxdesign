@@ -1,110 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>GW UX Design</title>
-    <meta name="description" content="Portfolio, notes, and projects." />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      (function () {
-        try {
-          var theme = localStorage.getItem("theme");
-          if (theme) document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {}
-      })();
-    </script>
-    <style>html{background-color:#0b1416;}</style>
-    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-  </head>
-  <body>
-    <a
-      href="#content"
-      class="skip"
-      style="
-        position: absolute;
-        left: -9999px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      "
-    >
-      Skip to content
-    </a>
-
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/">
-          <img src="/assets/img/logo.svg" alt="GW UX Design logo" />
-        </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Open navigation menu"
-          aria-expanded="false"
-        >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-
-        <nav class="nav" id="primary-nav">
-          <a href="/" aria-current="page">Home</a>
-          <!-- <a href="/pages/blog/">Blog</a> -->
-          <a href="/pages/profile/">Profile</a>
-          <a href="/pages/projects/">Projects</a>
-          <a href="/pages/contact/">Contact</a>
-
-          <button
-            class="theme-toggle"
-            type="button"
-            aria-label="Toggle colour theme"
-            aria-pressed="false"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="theme-switch" aria-hidden="true">
-              <span class="theme-thumb"></span>
-            </span>
-            <span class="theme-icon" aria-hidden="true">☾</span>
-          </button>
-        </nav>
-      </div>
-    </header>
-
-    <main id="content">
-      <div class="container">
-        <h1 class="page-title">Designing clear, practical experiences</h1>
-
-        <div class="posts-controls">
-          <label for="posts-sort" class="posts-sort-label">Sort by</label>
-          <select id="posts-sort" class="posts-sort">
-            <option value="desc">Newest to oldest</option>
-            <option value="asc">Oldest to newest</option>
-          </select>
-        </div>
-
-        <div id="posts-list" class="posts-list" aria-live="polite"></div>
-        <nav
-          id="posts-pagination"
-          class="pagination"
-          aria-label="Post pagination"
-        ></nav>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>© <span id="year"></span> GW UX Design</p>
-      </div>
-    </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/utils.js"></script>
-    <script src="/assets/js/blog.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>GW UX Design</title>
+  <meta name="description" content="Personal site and portfolio. Currently under development.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./content/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      align-items: centre;
+      justify-content: centre;
+      text-align: centre;
+    }
+    .construction {
+      max-width: 520px;
+      padding: 2rem;
+    }
+    .construction h1 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    .construction p {
+      margin-bottom: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="construction">
+    <img src="construction.png" alt="Construction image" style="width: 456px;" />
+    <h1>Under construction</h1>
+    <p>
+      This site is currently being rebuilt and will be launching soon.
+    </p>
+    <p>
+      Thanks for stopping by. Please check back shortly.
+    </p>
+  </main>
+</body>
 </html>
