@@ -1,5 +1,9 @@
 (function () {
-  const FUNCTION_ENDPOINT = "http://localhost:7071/api/Contact";
+  const FUNCTION_ENDPOINT =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+      ? "http://localhost:7071/api/Contact"
+      : "https://gwuxdesign-contact.azurewebsites.net/api/Contact";
 
   const form = document.getElementById("contact-form");
   const confirmation = document.getElementById("contact-confirmation");
@@ -11,9 +15,12 @@
     name: (value) => (value.trim().length > 0 ? "" : "Please enter your name."),
     email: (value) => {
       const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return pattern.test(value.trim()) ? "" : "Please enter a valid email address.";
+      return pattern.test(value.trim())
+        ? ""
+        : "Please enter a valid email address.";
     },
-    message: (value) => (value.trim().length > 0 ? "" : "Please enter a message."),
+    message: (value) =>
+      value.trim().length > 0 ? "" : "Please enter a message.",
   };
 
   function showFieldError(fieldName, message) {
@@ -34,7 +41,10 @@
 
   Object.keys(validators).forEach((fieldName) => {
     form.elements[fieldName].addEventListener("blur", () => {
-      showFieldError(fieldName, validators[fieldName](form.elements[fieldName].value));
+      showFieldError(
+        fieldName,
+        validators[fieldName](form.elements[fieldName].value),
+      );
     });
   });
 
@@ -46,7 +56,9 @@
       return;
     }
 
-    const turnstileField = document.querySelector('[name="cf-turnstile-response"]');
+    const turnstileField = document.querySelector(
+      '[name="cf-turnstile-response"]',
+    );
     if (!turnstileField || !turnstileField.value) {
       statusEl.textContent = "Please complete the CAPTCHA challenge.";
       return;

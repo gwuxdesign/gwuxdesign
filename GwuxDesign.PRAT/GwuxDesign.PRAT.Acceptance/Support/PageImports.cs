@@ -20,6 +20,7 @@ namespace GwuxDesign.PRAT.Acceptance.Support
         public NavigationPage navigationPage => new NavigationPage(_page);
         public ProfilePage profilePage => new ProfilePage(_page);
         public ProjectsPage projectsPage => new ProjectsPage(_page);
+        public ContactPage contactPage => new ContactPage(_page);
         public PostPage postPage => new PostPage(_page);
 
         // Example page requiring TestWorld context - replace with your own page objects
