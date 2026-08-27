@@ -81,6 +81,16 @@ Create `appsettings.local.json` in the `TestRunner.Web` folder with the followin
 }
 ```
 
+## Remote Test Runs (GitHub Actions)
+TestRunner.Web can trigger test runs on GitHub-hosted runners instead of on the machine it's running on — useful once TestRunner.Web itself is deployed somewhere (e.g. Azure App Service) rather than run locally.
+
+This requires:
+1. A [fine-grained personal access token](https://github.com/settings/personal-access-tokens) (or GitHub App token) with `Actions: Read and write` permission on this repo.
+2. That token set as `GitHub:Token` in `TestRunner.Web/appsettings.local.json` for local dev, or as an app-setting/environment variable (`GitHub__Token`) when deployed — never committed.
+3. The `Owner`/`Repo`/`WorkflowFileName` values in `appsettings.json` updated if you've renamed the project (see [Rename the Project](#rename-the-project)) — they must match the `.github/workflows/run-tests-dispatch.yml` workflow in your repo.
+
+Select **GitHub Actions** as the run location on the Run Tests page. Results (TRX + video/traces) are uploaded as a workflow artifact on the triggered run — open the linked run on GitHub to download them.
+
 ## Enabling Gherkin
 Open the project using the workspace file at the solution root:
 `GwuxDesign.code-workspace`

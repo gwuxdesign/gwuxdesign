@@ -1,0 +1,90 @@
+name: Run Tests (Manual Dispatch)
+
+run-name: Run tests${{ inputs.runner_name && format(' — triggered by {0}', inputs.runner_name) || '' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        type: choice
+        options: [local, online]
+        default: online
+      browser:
+        description: Browser to run tests in
+        type: choice
+        options: [chromium, firefox, webkit]
+        default: chromium
+      device:
+        description: Device/viewport to emulate
+        type: choice
+        options: [Desktop, Mobile, TabletVer, TabletHor]
+        default: Desktop
+      filter:
+        description: dotnet test --filter expression (e.g. TestCategory=Smoke)
+        type: string
+        default: TestCategory=Smoke
+      record_video:
+        description: Record video for every scenario
+        type: boolean
+        default: false
+      record_traces:
+        description: Record Playwright traces for every scenario
+        type: boolean
+        default: false
+      runner_name:
+        description: Name of the person triggering this run
+        type: string
+        default: ""
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        working-directory: GwuxDesign.PRAT
+        run: dotnet restore GwuxDesign.PRAT.Acceptance/GwuxDesign.PRAT.Acceptance.csproj
+
+      - name: Build
+        working-directory: GwuxDesign.PRAT
+        run: dotnet build GwuxDesign.PRAT.Acceptance/GwuxDesign.PRAT.Acceptance.csproj --no-restore
+
+      - name: Install Playwright browsers
+        working-directory: GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance
+        run: pwsh bin/Debug/net10.0/playwright.ps1 install --with-deps ${{ inputs.browser }}
+
+      - name: Serve site locally
+        if: ${{ inputs.environment == 'local' }}
+        run: python3 -m http.server 8000 &
+
+      - name: Run tests
+        working-directory: GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance
+        env:
+          ENVIRON: ${{ inputs.environment }}
+          Environments__local__BaseUrl: http://localhost:8000
+          Environments__online__BaseUrl: https://www.gwuxdesign.co.uk
+          BROWSER: ${{ inputs.browser }}
+          HEADED: "0"
+          DEVICE_TYPE: ${{ inputs.device }}
+          RECORD_VIDEO: ${{ inputs.record_video && '1' || '0' }}
+          RECORD_TRACES: ${{ inputs.record_traces && '1' || '0' }}
+        run: dotnet test --no-restore --filter "${{ inputs.filter }}" --logger "trx;LogFileName=run.trx"
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_id }}
+          path: |
+            GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance/**/*.trx
+            GwuxDesign.PRAT/GwuxDesign.PRAT.Acceptance/**/artifacts/**
+          if-no-files-found: ignore
+          retention-days: 14

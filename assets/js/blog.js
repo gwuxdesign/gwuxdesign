@@ -9,9 +9,12 @@
   let sortDirection = params.get("sort") === "asc" ? "asc" : "desc";
   const currentPage = Math.max(1, parseInt(params.get("page"), 10) || 1);
 
-  fetch("/assets/data/posts.json")
-    .then((response) => response.json())
-    .then((posts) => {
+  init();
+
+  async function init() {
+    try {
+      const posts = await fetchJSON("/assets/data/posts.json");
+
       if (sortSelect) {
         sortSelect.value = sortDirection;
       }
@@ -25,11 +28,11 @@
           renderForCurrentState(posts);
         });
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       listContainer.innerHTML = "<p>Unable to load posts right now.</p>";
       console.error("Failed to load posts:", error);
-    });
+    }
+  }
 
   function renderForCurrentState(posts) {
     const sorted = posts
@@ -73,9 +76,9 @@
       article.innerHTML = `
       ${imageMarkup}
       <div class="post-card-body">
-        <h2><a href="/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}&from=${backHref}">${post.title}</a></h2>
+        <h2><a href="/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}&from=${backHref}">${escapeHtml(post.title)}</a></h2>
         <p class="post-date">${formattedDate}</p>
-        <p>${post.summary}</p>
+        <p>${escapeHtml(post.summary)}</p>
       </div>
     `;
 

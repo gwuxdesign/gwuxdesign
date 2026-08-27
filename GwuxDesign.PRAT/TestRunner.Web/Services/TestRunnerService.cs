@@ -39,9 +39,7 @@ public class TestRunnerService : ITestRunnerService
             ? $"custom:{request.CustomResolution}"
             : request.Device;
 
-        // Build the test filter — supports multiple tags using comma separation
-        // e.g. "Smoke, Login" becomes "TestCategory=Smoke|TestCategory=Login"
-        var filter = BuildTestFilter(request.Suite);
+        var filter = TestFilterBuilder.Build(request.Suite);
 
         var psi = new ProcessStartInfo
         {
@@ -162,20 +160,6 @@ public class TestRunnerService : ITestRunnerService
             yield return $"REPORT:{runId}/{reportFileName}";
 
         yield return "COMPLETE";
-    }
-
-    // Converts a tag expression into a dotnet test filter string
-    // Comma separation (OR):  "Smoke, Login"  → "TestCategory=Smoke|TestCategory=Login"
-    // Single tag:             "Smoke"         → "TestCategory=Smoke"
-    private static string BuildTestFilter(string suite)
-    {
-        if (suite.Contains(','))
-        {
-            var parts = suite.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            return string.Join("|", parts.Select(p => $"TestCategory={p}"));
-        }
-
-        return $"TestCategory={suite.Trim()}";
     }
 
     private static void MoveArtifacts(string artifactsBase, string runFolder)

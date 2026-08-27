@@ -80,28 +80,6 @@ public class ContactFunction
             return await BadRequest(req, allowedOrigin, "Failed to send message. Please try again.");
         }
 
-        // Auto-reply confirmation back to the submitter, including their original message.
-        var confirmationMsg = MailHelper.CreateSingleEmail(
-            from: new EmailAddress("contact@gwuxdesign.co.uk", "GW UX Design"),
-            to: new EmailAddress(payload.Email, payload.Name),
-            subject: "Thanks for your message",
-            plainTextContent:
-                $"Thanks for getting in touch. I'll get back to you as soon as I can.\n\n" +
-                $"---\n" +
-                $"Your original message:\n\n{payload.Message}",
-            htmlContent: null);
-
-        var confirmationResult = await client.SendEmailAsync(confirmationMsg);
-
-        if (!confirmationResult.IsSuccessStatusCode)
-        {
-            // The message to you already succeeded, this second email is a courtesy,
-            // not the primary success condition — log it but don't fail the whole request.
-            _logger.LogWarning(
-                "Confirmation email to {Email} failed with status {Status}",
-                payload.Email, confirmationResult.StatusCode);
-        }
-
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Access-Control-Allow-Origin", allowedOrigin);
         await response.WriteAsJsonAsync(new { success = true });

@@ -5,15 +5,26 @@
   <title>Page not found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <link rel="icon" type="image/x-icon" href="favicon.svg">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme) document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="stylesheet" href="/assets/css/style.css">
   <style>
+    html {
+      background-color: #0b1416;
+    }
     body {
       display: flex;
       min-height: 100vh;
       align-items: center;
       justify-content: center;
-      text-align: centre;
+      text-align: center;
     }
     .error {
       max-width: 480px;
@@ -34,7 +45,7 @@
 </head>
 <body>
   <main class="error">
-    <img src="./assets/img/lost.png" alt="GWUXDESIGN Logo" style="width: 480px; margin: 0; padding: 0;" />
+    <img src="/assets/img/lost.png" alt="" style="width: 480px; margin: 0; padding: 0;" />
     <h1>Page not found</h1>
     <p>
       The page you were looking for does not exist, or may have been moved.

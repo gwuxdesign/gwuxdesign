@@ -2,9 +2,12 @@
   const container = document.getElementById("skills-list");
   if (!container) return;
 
-  fetch("/assets/data/skills.json")
-    .then((response) => response.json())
-    .then((skills) => {
+  init();
+
+  async function init() {
+    try {
+      const skills = await fetchJSON("/assets/data/skills.json");
+
       skills.forEach((item) => {
         const row = document.createElement("li");
         row.className = "skill-bar";
@@ -13,27 +16,30 @@
         row.innerHTML = `
           <span class="skill-track">
             <span class="skill-fill" style="width: ${item.level}%">
-              <span class="skill-label">${item.skill}</span>
+              <span class="skill-label">${escapeHtml(item.skill)}</span>
             </span>
           </span>
         `;
 
         container.appendChild(row);
       });
-    })
-    .catch((error) => {
+    } catch (error) {
       container.innerHTML = "<p>Unable to load skills right now.</p>";
       console.error("Failed to load skills:", error);
-    });
+    }
+  }
 })();
 
 (function () {
   const table = document.getElementById("software-table");
   if (!table) return;
 
-  fetch("/assets/data/software.json")
-    .then((response) => response.json())
-    .then((categories) => {
+  init();
+
+  async function init() {
+    try {
+      const categories = await fetchJSON("/assets/data/software.json");
+
       categories.forEach((category) => {
         category.tools.forEach((tool, index) => {
           const row = document.createElement("tr");
@@ -52,9 +58,9 @@
           table.appendChild(row);
         });
       });
-    })
-    .catch((error) => {
+    } catch (error) {
       table.innerHTML = "<tr><td>Unable to load software list right now.</td></tr>";
       console.error("Failed to load software list:", error);
-    });
+    }
+  }
 })();

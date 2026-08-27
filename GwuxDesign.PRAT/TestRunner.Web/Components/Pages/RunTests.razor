@@ -155,6 +155,30 @@
 </div>
 
 <div class="config-section">
+    <div class="section-label">Run location</div>
+    <div class="btn-group" role="group" aria-label="Run location">
+        <input type="radio" class="btn-check" name="runLocation" id="runLocationLocal" autocomplete="off"
+               checked="@(RunLocation == "Local")" @onchange="@(() => RunLocation = "Local")" />
+        <label class="btn btn-outline-primary" for="runLocationLocal">
+            Local (@Environment.MachineName)
+        </label>
+
+        <input type="radio" class="btn-check" name="runLocation" id="runLocationGitHub" autocomplete="off"
+               checked="@(RunLocation == "GitHub Actions")" @onchange="@(() => RunLocation = "GitHub Actions")" />
+        <label class="btn btn-outline-primary" for="runLocationGitHub">
+            GitHub Actions
+        </label>
+    </div>
+    @if (RunLocation == "GitHub Actions")
+    {
+        <p class="text-muted mt-2 mb-0" style="font-size: 0.85rem;">
+            Runs on GitHub-hosted runners, headless only. Video/traces and the TRX are uploaded as a workflow
+            artifact — open the run on GitHub to download them once it finishes.
+        </p>
+    }
+</div>
+
+<div class="config-section">
     <div class="section-label">Configuration</div>
 
     <div class="dropdowns-grid">
@@ -272,9 +296,10 @@
             </span>
             <div class="form-check form-switch mb-0">
                 <input class="form-check-input" type="checkbox" role="switch" id="headedSwitch"
+                       disabled="@(RunLocation == "GitHub Actions")"
                        @bind="SelectedHeaded" />
                 <label class="form-check-label" for="headedSwitch">
-                    @(SelectedHeaded ? "Headed" : "Headless")
+                    @(RunLocation == "GitHub Actions" ? "Headless (forced on GitHub Actions)" : (SelectedHeaded ? "Headed" : "Headless"))
                 </label>
             </div>
         </div>
@@ -354,6 +379,13 @@
             📊 View Report
         </a>
     }
+
+    @if (!string.IsNullOrEmpty(LastGitHubRunUrl))
+    {
+        <a href="@LastGitHubRunUrl" target="_blank" class="btn btn-outline-success">
+            📊 View on GitHub
+        </a>
+    }
 </div>
 
 <div class="output-wrapper" id="output-wrapper">
@@ -373,6 +405,7 @@
     private List<string> Environments = new() { "local", "online" };
     private List<string> Suites = new() { "Smoke", "Regression", "Full", "Custom" };
 
+    private string RunLocation = "Local";
     private string RunnerName = "";
     private string SelectedBrowser = "chromium";
     private string SelectedDevice = "Desktop";
@@ -389,8 +422,10 @@
     private bool IsRunning = false;
     private bool ShowValidation = false;
     private string? LastReportFileName = null;
+    private string? LastGitHubRunUrl = null;
 
     [Inject] private ITestRunnerService TestRunnerService { get; set; } = default!;
+    [Inject] private IGitHubActionsService GitHubActionsService { get; set; } = default!;
     private CancellationTokenSource? cts;
 
     private string? ConfigurationWarning => (SelectedBrowser, SelectedDevice) switch
@@ -477,6 +512,7 @@
 
         IsRunning = true;
         LastReportFileName = null;
+        LastGitHubRunUrl = null;
         OutputLines.Clear();
         cts = new CancellationTokenSource();
 
@@ -484,26 +520,53 @@
             ? CustomTag.Trim().TrimStart('@')
             : SelectedSuite;
 
-        var request = new TestRunRequest(
-            SelectedBrowser,
-            SelectedDevice,
-            SelectedEnvironment,
-            effectiveTag,
-            SelectedHeaded,
-            RecordVideo,
-            RecordTraces,
-            RunnerName.Trim(),
-            CustomResolution: string.IsNullOrWhiteSpace(CustomResolution) ? null : CustomResolution,
-            CustomTag: SelectedSuite == "Custom" ? effectiveTag : null
-        );
+        IAsyncEnumerable<string> lines;
+
+        if (RunLocation == "GitHub Actions")
+        {
+            var githubRequest = new GitHubDispatchRequest(
+                SelectedEnvironment,
+                SelectedBrowser,
+                SelectedDevice,
+                TestFilterBuilder.Build(effectiveTag),
+                RecordVideo,
+                RecordTraces,
+                RunnerName.Trim()
+            );
+
+            lines = GitHubActionsService.RunTestsAsync(githubRequest, cts.Token);
+        }
+        else
+        {
+            var request = new TestRunRequest(
+                SelectedBrowser,
+                SelectedDevice,
+                SelectedEnvironment,
+                effectiveTag,
+                SelectedHeaded,
+                RecordVideo,
+                RecordTraces,
+                RunnerName.Trim(),
+                CustomResolution: string.IsNullOrWhiteSpace(CustomResolution) ? null : CustomResolution,
+                CustomTag: SelectedSuite == "Custom" ? effectiveTag : null
+            );
+
+            lines = TestRunnerService.RunTestsAsync(request, cts.Token);
+        }
 
         try
         {
-            await foreach (var line in TestRunnerService.RunTestsAsync(request, cts.Token))
+            await foreach (var line in lines)
             {
                 if (line.StartsWith("REPORT:"))
                 {
                     LastReportFileName = line["REPORT:".Length..];
+                    continue;
+                }
+
+                if (line.StartsWith("REPORT-LINK:"))
+                {
+                    LastGitHubRunUrl = line["REPORT-LINK:".Length..];
                     continue;
                 }
 

@@ -17,6 +17,8 @@ builder.Services.AddSignalR(options =>
 
 builder.Services.AddSingleton<IReportService, ReportService>();
 builder.Services.AddSingleton<ITestRunnerService, TestRunnerService>();
+builder.Services.AddHttpClient(nameof(GitHubActionsService));
+builder.Services.AddSingleton<IGitHubActionsService, GitHubActionsService>();
 
 var app = builder.Build();
 
