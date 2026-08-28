@@ -14,5 +14,5 @@ Feature: Profile page
   Scenario: The LinkedIn link points to the correct profile
     Then the LinkedIn link should point to "https://www.linkedin.com/in/gregjswilliams/"
 
-  Scenario: Software table renders grouped entries
-    Then at least one software row should be displayed
+  Scenario: Software groups render grouped entries
+    Then at least one software tag should be displayed

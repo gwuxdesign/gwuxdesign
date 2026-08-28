@@ -18,18 +18,7 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <a
-      href="#content"
-      class="skip"
-      style="
-        position: absolute;
-        left: -9999px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      "
-    >
+    <a href="#content" class="skip">
       Skip to content
     </a>
 
@@ -76,6 +65,32 @@
     <main id="content">
       <div class="container">
         <section class="card profile">
+          <div class="profile-side">
+            <div class="profile-photo">
+              <img src="/assets/img/profile.jpg" alt="Photo of Greg Williams" />
+              <a
+                class="profile-link"
+                href="https://www.linkedin.com/in/gregjswilliams/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+            </div>
+
+            <div class="skills-block">
+              <div class="skills-scale">
+                <span>Beginner</span>
+                <span>Experienced</span>
+              </div>
+
+              <ul
+                id="skills-list"
+                class="skills-list"
+                aria-label="Programming skills"
+              ></ul>
+            </div>
+          </div>
+
           <div class="profile-about">
             <h1>About</h1>
             <p>
@@ -103,34 +118,8 @@
 
             <section class="software">
               <h2>Software &amp; Suites</h2>
-              <table id="software-table" class="software-table"></table>
+              <div id="software-groups" class="software-groups"></div>
             </section>
-          </div>
-
-          <div class="profile-side">
-            <div class="profile-photo">
-              <img src="/assets/img/profile.jpg" alt="Photo of Greg Williams" />
-              <a
-                class="profile-link"
-                href="https://www.linkedin.com/in/gregjswilliams/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >LinkedIn</a
-              >
-            </div>
-
-            <div class="skills-block">
-              <div class="skills-scale">
-                <span>Beginner</span>
-                <span>Experienced</span>
-              </div>
-
-              <ul
-                id="skills-list"
-                class="skills-list"
-                aria-label="Programming skills"
-              ></ul>
-            </div>
           </div>
         </section>
       </div>

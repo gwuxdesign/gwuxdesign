@@ -14,9 +14,14 @@
   async function init() {
     try {
       const posts = await fetchJSON("/assets/data/posts.json");
+      const controls = document.querySelector(".posts-controls");
 
       if (sortSelect) {
         sortSelect.value = sortDirection;
+      }
+
+      if (controls && posts.length <= 1) {
+        controls.hidden = true;
       }
 
       renderForCurrentState(posts);

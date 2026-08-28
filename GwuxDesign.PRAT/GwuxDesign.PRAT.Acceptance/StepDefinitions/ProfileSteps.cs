@@ -40,10 +40,10 @@ namespace GwuxDesign.PRAT.Acceptance.StepDefinitions
             Assert.That(href, Is.EqualTo(expectedUrl));
         }
 
-        [Then("at least one software row should be displayed")]
-        public async Task ThenAtLeastOneSoftwareRowShouldBeDisplayed()
+        [Then("at least one software tag should be displayed")]
+        public async Task ThenAtLeastOneSoftwareTagShouldBeDisplayed()
         {
-            var count = await _world.Pages.profilePage.SoftwareTableRows.CountAsync();
+            var count = await _world.Pages.profilePage.SoftwareTags.CountAsync();
             Assert.That(count, Is.GreaterThan(0));
         }
 

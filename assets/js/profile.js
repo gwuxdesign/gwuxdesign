@@ -31,8 +31,8 @@
 })();
 
 (function () {
-  const table = document.getElementById("software-table");
-  if (!table) return;
+  const container = document.getElementById("software-groups");
+  if (!container) return;
 
   init();
 
@@ -41,25 +41,29 @@
       const categories = await fetchJSON("/assets/data/software.json");
 
       categories.forEach((category) => {
-        category.tools.forEach((tool, index) => {
-          const row = document.createElement("tr");
+        const group = document.createElement("div");
+        group.className = "software-group";
 
-          if (index === 0) {
-            const th = document.createElement("th");
-            th.rowSpan = category.tools.length;
-            th.textContent = category.category;
-            row.appendChild(th);
-          }
+        const title = document.createElement("h3");
+        title.className = "software-group-title";
+        title.textContent = category.category;
+        group.appendChild(title);
 
-          const td = document.createElement("td");
-          td.textContent = tool;
-          row.appendChild(td);
+        const tags = document.createElement("ul");
+        tags.className = "software-tags";
 
-          table.appendChild(row);
+        category.tools.forEach((tool) => {
+          const tag = document.createElement("li");
+          tag.className = "software-tag";
+          tag.textContent = tool;
+          tags.appendChild(tag);
         });
+
+        group.appendChild(tags);
+        container.appendChild(group);
       });
     } catch (error) {
-      table.innerHTML = "<tr><td>Unable to load software list right now.</td></tr>";
+      container.innerHTML = "<p>Unable to load software list right now.</p>";
       console.error("Failed to load software list:", error);
     }
   }

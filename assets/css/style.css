@@ -133,6 +133,22 @@ img {
   padding: var(--space-5);
 }
 
+/* ---------- Skip link ---------- */
+.skip {
+  position: absolute;
+  top: -9999px;
+  left: 0;
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent);
+  color: #fff;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip:focus {
+  top: 0;
+}
+
 /* ---------- Header ---------- */
 .site-header {
   border-bottom: 1px solid var(--border);
@@ -449,6 +465,10 @@ main {
   margin-bottom: var(--space-4);
 }
 
+.posts-controls[hidden] {
+  display: none;
+}
+
 .posts-sort-label {
   font-size: 0.85rem;
   color: var(--muted);
@@ -634,24 +654,49 @@ main {
   margin: 0 0 var(--space-3);
 }
 
-.software-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-top: 1px solid var(--border);
+.software-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4) var(--space-5);
 }
 
-.software-table th,
-.software-table td {
-  text-align: left;
-  padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--border);
-}
-
-.software-table th {
-  color: var(--muted);
+.software-group-title {
+  font-size: 0.75rem;
   font-weight: 600;
-  vertical-align: top;
-  width: 200px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--space-2);
+}
+
+.software-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.software-tag {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: default;
+  user-select: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.software-tag:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
 }
 
 /* ---------- Projects page ---------- */
@@ -843,10 +888,19 @@ main {
     align-items: start;
   }
 
+  .profile-about {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .profile-side {
+    grid-column: 2;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
+    position: sticky;
+    top: var(--space-4);
   }
 }
 
