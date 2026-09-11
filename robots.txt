@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://www.gwuxdesign.co.uk/sitemap.xml

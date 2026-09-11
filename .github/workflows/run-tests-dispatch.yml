@@ -76,7 +76,8 @@ jobs:
           DEVICE_TYPE: ${{ inputs.device }}
           RECORD_VIDEO: ${{ inputs.record_video && '1' || '0' }}
           RECORD_TRACES: ${{ inputs.record_traces && '1' || '0' }}
-        run: dotnet test --no-restore --filter "${{ inputs.filter }}" --logger "trx;LogFileName=run.trx"
+          TEST_FILTER: ${{ inputs.filter }}
+        run: dotnet test --no-restore --filter "$TEST_FILTER" --logger "trx;LogFileName=run.trx"
 
       - name: Upload test artifacts
         if: always()

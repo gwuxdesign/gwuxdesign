@@ -31,6 +31,12 @@ body {
   --accent-hover: rgb(0, 150, 167);
   --accent-soft: rgba(0, 124, 138, 0.15);
 
+  /* --accent fails WCAG AA (4.5:1) as text on --bg (3.77:1) — --link is the
+     same brand teal, brightened just enough to pass (6.66:1) while --accent
+     stays as-is for large-area fills (buttons, pills) that only need 3:1. */
+  --link: rgb(0, 170, 190);
+  --error: #e05c5c;
+
   --text: #e6f1f3;
   --muted: #9fb7bd;
   --border: rgba(230, 241, 243, 0.12);
@@ -62,6 +68,11 @@ body {
 
   /* Slightly softer tint in light mode */
   --accent-soft: rgba(0, 124, 138, 0.1);
+
+  /* Same brand teal, darkened to pass 4.5:1 as text on the light --bg
+     (--accent itself only manages 4.28:1 here; this hits 6.87:1). */
+  --link: rgb(0, 90, 100);
+  --error: rgb(196, 47, 47);
 }
 
 /* ---------- View transitions (page navigation) ---------- */
@@ -99,7 +110,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -570,7 +581,7 @@ main {
 }
 
 .profile-link {
-  color: var(--accent);
+  color: var(--link);
   font-size: 0.9rem;
   text-decoration: none;
 }
@@ -743,7 +754,7 @@ main {
 }
 
 .project-card a {
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
   font-weight: 600;
 }
@@ -796,7 +807,7 @@ main {
 }
 
 .form-error {
-  color: #e05c5c;
+  color: var(--error);
   font-size: 0.85rem;
   min-height: 1.2em;
 }

@@ -44,15 +44,23 @@ public class TestRunnerService : ITestRunnerService
         var psi = new ProcessStartInfo
         {
             FileName = "dotnet",
-            Arguments = $"test --filter \"{filter}\" " +
-                        $"--logger \"console;verbosity=detailed\" " +
-                        $"--logger \"trx;LogFileName={trxPath}\"",
             WorkingDirectory = _workingDirectory,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true
         };
+
+        // ArgumentList passes each argument as a discrete value rather than a
+        // single quoted string, so a stray `"` in a user-supplied filter (e.g.
+        // the "Custom Tag" field) can't break out and inject extra CLI args.
+        psi.ArgumentList.Add("test");
+        psi.ArgumentList.Add("--filter");
+        psi.ArgumentList.Add(filter);
+        psi.ArgumentList.Add("--logger");
+        psi.ArgumentList.Add("console;verbosity=detailed");
+        psi.ArgumentList.Add("--logger");
+        psi.ArgumentList.Add($"trx;LogFileName={trxPath}");
 
         psi.Environment["BROWSER"] = request.Browser;
         psi.Environment["HEADED"] = request.Headed ? "1" : "0";
@@ -65,7 +73,7 @@ public class TestRunnerService : ITestRunnerService
         yield return "SERVICE CALLED";
         yield return $"Working directory : {psi.WorkingDirectory}";
         yield return $"Exists            : {Directory.Exists(psi.WorkingDirectory)}";
-        yield return $"Command           : {psi.FileName} {psi.Arguments}";
+        yield return $"Command           : {psi.FileName} {string.Join(' ', psi.ArgumentList)}";
         yield return $"Browser: {request.Browser} | Headed: {request.Headed} | Device: {deviceType} | Environment: {request.Environment} | Suite: {request.Suite} | Video: {request.RecordVideo} | Traces: {request.RecordTraces}";
         yield return $"Run folder        : {runFolder}";
         yield return "";

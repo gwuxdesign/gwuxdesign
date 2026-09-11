@@ -25,7 +25,7 @@
               <h2>${escapeHtml(project.title)}</h2>
               <p>${escapeHtml(project.description)}</p>
               <p class="project-tags">${escapeHtml(project.tags.join(", "))}</p>
-              <a href="${project.link}" target="_blank" rel="noopener noreferrer">View project</a>
+              <a href="${escapeHtml(project.link)}" target="_blank" rel="noopener noreferrer">View project</a>
             </div>
           `;
 
