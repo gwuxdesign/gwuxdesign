@@ -35,6 +35,12 @@ public class ContactFunction
 
         var payload = await req.ReadFromJsonAsync<ContactRequest>();
 
+        if (!string.IsNullOrWhiteSpace(payload?.Website))
+        {
+            _logger.LogWarning("Honeypot field filled, rejecting as bot submission.");
+            return await BadRequest(req, allowedOrigin, "Submission rejected.");
+        }
+
         if (payload is null || string.IsNullOrWhiteSpace(payload.Name)
             || string.IsNullOrWhiteSpace(payload.Email)
             || string.IsNullOrWhiteSpace(payload.Message)
@@ -95,5 +101,5 @@ public class ContactFunction
     }
 }
 
-public record ContactRequest(string Name, string Email, string Message, string TurnstileToken);
+public record ContactRequest(string Name, string Email, string Message, string TurnstileToken, string? Website);
 public record TurnstileResult(bool Success);
